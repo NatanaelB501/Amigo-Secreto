@@ -46,12 +46,11 @@ function sortear() {
 }
 
 //reinicia tudo
-function reiniciar() {
-    amigosAdicionados = [''];
-    document.getElementById('lista-amigos').innerText = '';
-    document.getElementById('lista-sorteio').innerText = '';
-    document.getElementById('nome-amigo').focus();
-}
+// Adicione um manipulador de evento ao botão "Reiniciar"
+document.getElementById('reiniciar').addEventListener('click', function() {
+    // Recarrega a página
+    window.location.reload();
+  });
 
 //funções da tecla enter
 document.addEventListener('keyup', function(teclar) {
@@ -79,6 +78,13 @@ function embaralharLista(amigosAdicionados) {
     console.log(amigosAdicionados);
     return amigosAdicionados;
 } 
+
+// Adicione um manipulador de evento ao botão "Reiniciar"
+document.getElementById('reiniciar').addEventListener('click', function() {
+    // Recarrega a página
+    window.location.reload();
+  });
+  
 
 
 // document.getElementById('adicionar').setAttribute('disabled', 'true'); // Desabilita o botão "Adicionar" no início
