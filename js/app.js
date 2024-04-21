@@ -34,6 +34,7 @@ function adicionar() {
 
 //funcao para sortear os nomes digitados no campo principal
 function sortear() {
+    embaralharLista(amigosAdicionados);
     document.getElementById('lista-sorteio').innerText = amigosAdicionados.join(', ');
 }
 
@@ -58,6 +59,15 @@ document.addEventListener('keyup', function(teclar) {
             }
     }
 });
+
+//função para embaralhar a lista de amigos
+function embaralharLista(amigosAdicionados) {
+    for (let i = amigosAdicionados.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [amigosAdicionados[i], amigosAdicionados[j]] = [amigosAdicionados[j], amigosAdicionados[i]];
+    }
+    return amigosAdicionados;
+}
 
 // document.getElementById('adicionar').setAttribute('disabled', 'true'); // Desabilita o botão "Adicionar" no início
 
