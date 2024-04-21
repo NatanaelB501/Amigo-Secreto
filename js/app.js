@@ -33,17 +33,23 @@ function sortear() {
 
     //chamei a tela do sorteio para poder exibir os nomes sorteados
     let sorteio = document.getElementById('lista-sorteio');
-
-   //Este é um loop for que itera (percorre) sobre os elementos do lista
-    for (i = 0; i < amigosAdicionados.length; i++)
+    
+    //se a quantidade de amigos for inferior a 4 pessoas, o sorteio não vai rolar
+    if (amigosAdicionados.length >= 4) {
+       
+        //Este é um loop for que itera (percorre) sobre os elementos do lista
+        for (i = 0; i < amigosAdicionados.length; i++)
         
-    // se i for igual ao todos o elementos da lista, vai aparecer na tela que o ultimo nome saiu como amigo secreto do primeiro nome, o índice [0] da array
-    if (i == amigosAdicionados.length - 1) {
-        sorteio.innerHTML = sorteio.innerHTML + amigosAdicionados[i] + '-->' + amigosAdicionados[0] + '<br>';
-    } else { //Se o i ainda não for igual todos os elementos da lista, vai aparecer na tela o nome em que o i está sendo igual, e esse nome vai ver amigo secreto do proximo nome [i + 1]
-        sorteio.innerHTML = sorteio.innerHTML + amigosAdicionados[i] + '-->' + amigosAdicionados[i + 1] + '<br>';
+            // se i for igual ao todos o elementos da lista, vai aparecer na tela que o ultimo nome saiu como amigo secreto do primeiro nome, o índice [0] da array
+            if (i == amigosAdicionados.length - 1) {
+            sorteio.innerHTML = sorteio.innerHTML + amigosAdicionados[i] + '-->' + amigosAdicionados[0] + '<br>';
+                } else { //Se o i ainda não for igual todos os elementos da lista, vai aparecer na tela o nome em que o i está sendo igual, e esse nome vai ver amigo secreto do proximo nome [i + 1]
+                    sorteio.innerHTML = sorteio.innerHTML + amigosAdicionados[i] + '-->' + amigosAdicionados[i + 1] + '<br>';
+                        }
+        } else {
+            alert('A quantidade de amigos é insuficiente');//mensagem informando que o número de pessoas é menor que 4 pessoas.
+        }
     }
-}
 
 //reinicia tudo
 // Adicione um manipulador de evento ao botão "Reiniciar"
@@ -84,11 +90,3 @@ document.getElementById('reiniciar').addEventListener('click', function() {
     // Recarrega a página
     window.location.reload();
   });
-  
-
-
-// document.getElementById('adicionar').setAttribute('disabled', 'true'); // Desabilita o botão "Adicionar" no início
-
-// document.getElementById('nome-amigo').addEventListener('input', function() {
-//   document.getElementById('adicionar').setAttribute('disabled', 'false'); // Habilita o botão "Adicionar" quando começa a digitar
-// });
