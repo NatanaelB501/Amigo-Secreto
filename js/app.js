@@ -13,6 +13,12 @@ function adicionar() {
     
     //aqui é o campo para digitar o nome do amigo e ele irá para a lista de amigos
     let digitarNomeDoAmigo = document.getElementById('nome-amigo').value;
+    
+    if (amigosAdicionados.includes(digitarNomeDoAmigo)) {
+        alert('Esse amigo já foi adicionado!')
+        document.getElementById('nome-amigo').value = '';
+        return;
+    }
     let nomeAmigo = digitarNomeDoAmigo;
 
     //condição para caso nao tenha nada digitado no campo principal, não aconteça nada ao clicar em adicionar
