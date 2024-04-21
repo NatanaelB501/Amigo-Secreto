@@ -34,8 +34,20 @@ function adicionar() {
 
 //funcao para sortear os nomes digitados no campo principal
 function sortear() {
-    embaralharLista(amigosAdicionados);
-    document.getElementById('lista-sorteio').innerText = amigosAdicionados.join(', ');
+    embaralharLista(amigosAdicionados);//lista já embaralhada
+
+    //chamei a tela do sorteio para poder exibir os nomes sorteados
+    let sorteio = document.getElementById('lista-sorteio');
+
+   //Este é um loop for que itera (percorre) sobre os elementos do lista
+    for (i = 0; i < amigosAdicionados.length; i++)
+        
+    // se i for igual ao todos o elementos da lista, vai aparecer na tela que o ultimo nome saiu como amigo secreto do primeiro nome, o índice [0] da array
+    if (i == amigosAdicionados.length - 1) {
+        sorteio.innerHTML = sorteio.innerHTML + amigosAdicionados[i] + '-->' + amigosAdicionados[0] + '<br>';
+    } else { //Se o i ainda não for igual todos os elementos da lista, vai aparecer na tela o nome em que o i está sendo igual, e esse nome vai ver amigo secreto do proximo nome [i + 1]
+        sorteio.innerHTML = sorteio.innerHTML + amigosAdicionados[i] + '-->' + amigosAdicionados[i + 1] + '<br>';
+    }
 }
 
 //reinicia tudo
@@ -66,8 +78,9 @@ function embaralharLista(amigosAdicionados) {
         const j = Math.floor(Math.random() * (i + 1));
         [amigosAdicionados[i], amigosAdicionados[j]] = [amigosAdicionados[j], amigosAdicionados[i]];
     }
+    console.log(amigosAdicionados);
     return amigosAdicionados;
-}
+} 
 
 // document.getElementById('adicionar').setAttribute('disabled', 'true'); // Desabilita o botão "Adicionar" no início
 
