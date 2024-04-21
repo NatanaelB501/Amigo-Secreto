@@ -59,11 +59,14 @@ document.addEventListener('keyup', function(teclar) {
         teclar.preventDefault(); // Evita o comportamento padrão de submissão do formulário (evita atualizar a pagina
 
         // caso a campo principal 'Digite nome de um amigo' esteja vazio, o botão adicionar não vai funcionar, passando a interação pro btao sortear
-        if (document.getElementById('nome-amigo').value == '') {
+        if (document.getElementById('nome-amigo').value == '' && document.getElementById('lista-sorteio').innerHTML == '') {
         sortear(); //sorteia os nomes
+        } else if (document.getElementById('nome-amigo').value == '' && document.getElementById('lista-sorteio').innerHTML) {
+            document.getElementById('lista-sorteio').innerHTML = '';
+            sortear();
         } else {
-        adicionar();//adiciona o amigo digitado no campo 'amigos incluidos'
-            }
+            adicionar();//adiciona o amigo digitado no campo 'amigos incluidos'
+                }
     }
 });
 
